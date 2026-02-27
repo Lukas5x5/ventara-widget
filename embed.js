@@ -21,10 +21,9 @@
   iframe.src = baseUrl + '/?operator=' + encodeURIComponent(operatorId);
   iframe.style.cssText = [
     'width:100%',
-    'height:800px',
+    'height:700px',
     'border:none',
     'border-radius:20px',
-    'overflow:hidden',
     'color-scheme:dark',
     'display:block',
     'opacity:0',
@@ -34,17 +33,15 @@
   iframe.setAttribute('loading', 'lazy');
   iframe.setAttribute('title', 'Ventara Booking');
   iframe.setAttribute('allow', 'payment');
-  iframe.setAttribute('scrolling', 'no');
 
   // Fade in once loaded
   iframe.onload = function() {
     iframe.style.opacity = '1';
   };
 
-  // Auto-resize iframe to match content height — no scrollbar
+  // Auto-resize iframe to match content height
   window.addEventListener('message', function(e) {
     if (e.data && e.data.type === 'ventara-resize' && e.data.height) {
-      // Add buffer to prevent clipping
       iframe.style.height = (e.data.height + 20) + 'px';
     }
   });
