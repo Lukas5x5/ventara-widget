@@ -12,38 +12,40 @@
     return;
   }
 
-  // Wrapper for centering and styling
+  // Wrapper — responsive, centered
   var wrapper = document.createElement('div');
-  wrapper.style.cssText = 'max-width:500px;margin:0 auto;position:relative;';
+  wrapper.style.cssText = 'max-width:500px;margin:0 auto;width:100%;position:relative;';
 
   var baseUrl = script.src.replace(/\/embed\.js.*/, '');
   var iframe = document.createElement('iframe');
   iframe.src = baseUrl + '/?operator=' + encodeURIComponent(operatorId);
   iframe.style.cssText = [
     'width:100%',
-    'min-height:680px',
+    'height:700px',
     'border:none',
-    'border-radius:24px',
+    'border-radius:20px',
     'overflow:hidden',
     'color-scheme:dark',
     'display:block',
     'opacity:0',
-    'transition:opacity 0.4s ease',
+    'transition:opacity 0.4s ease,height 0.3s ease',
     'box-shadow:0 8px 32px rgba(0,0,0,0.3),0 2px 8px rgba(0,0,0,0.2)',
   ].join(';');
   iframe.setAttribute('loading', 'lazy');
   iframe.setAttribute('title', 'Ventara Booking');
   iframe.setAttribute('allow', 'payment');
+  iframe.setAttribute('scrolling', 'no');
 
   // Fade in once loaded
   iframe.onload = function() {
     iframe.style.opacity = '1';
   };
 
-  // Auto-resize iframe based on content height
+  // Auto-resize iframe to match content height — no scrollbar
   window.addEventListener('message', function(e) {
     if (e.data && e.data.type === 'ventara-resize' && e.data.height) {
-      iframe.style.height = Math.max(400, e.data.height) + 'px';
+      // Add small buffer to prevent any clipping
+      iframe.style.height = (e.data.height + 8) + 'px';
     }
   });
 

@@ -6,23 +6,25 @@
   <title>Ventara Booking</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-    body {
+    html, body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       background: transparent;
       color: #e5e7eb;
       line-height: 1.5;
-      overflow-x: hidden;
+      overflow: hidden;
+      height: auto;
     }
     input, textarea, select, button { font-family: inherit; }
     input:focus, textarea:focus { outline: none; border-color: rgba(255,255,255,0.25) !important; }
     ::placeholder { color: #475569; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+    /* Hide scrollbars completely — iframe auto-resizes */
+    ::-webkit-scrollbar { display: none; }
+    * { -ms-overflow-style: none; scrollbar-width: none; }
     @keyframes ventara-spin { to { transform: rotate(360deg); } }
   </style>
-  <script type="module" crossorigin src="/ventara-widget/assets/index-D0jV4oPT.js"></script>
+  <script type="module" crossorigin src="/ventara-widget/assets/index-BSCMM6pf.js"></script>
 </head>
 <body>
   <div id="ventara-widget"></div>
