@@ -21,14 +21,14 @@
   iframe.src = baseUrl + '/?operator=' + encodeURIComponent(operatorId);
   iframe.style.cssText = [
     'width:100%',
-    'height:700px',
+    'height:800px',
     'border:none',
     'border-radius:20px',
     'overflow:hidden',
     'color-scheme:dark',
     'display:block',
     'opacity:0',
-    'transition:opacity 0.4s ease,height 0.3s ease',
+    'transition:opacity 0.4s ease',
     'box-shadow:0 8px 32px rgba(0,0,0,0.3),0 2px 8px rgba(0,0,0,0.2)',
   ].join(';');
   iframe.setAttribute('loading', 'lazy');
@@ -44,8 +44,8 @@
   // Auto-resize iframe to match content height — no scrollbar
   window.addEventListener('message', function(e) {
     if (e.data && e.data.type === 'ventara-resize' && e.data.height) {
-      // Add small buffer to prevent any clipping
-      iframe.style.height = (e.data.height + 8) + 'px';
+      // Add buffer to prevent clipping
+      iframe.style.height = (e.data.height + 20) + 'px';
     }
   });
 
